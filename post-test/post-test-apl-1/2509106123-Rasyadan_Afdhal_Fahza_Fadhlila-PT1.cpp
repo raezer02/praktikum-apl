@@ -21,6 +21,11 @@
             if (usnInput != usn || nimInput != nim)
             {
                 dicoba++;
+                if (dicoba == 3)
+                {
+                    cout << "\nPercobaan melebihi 3 kali. Program dihentikan" << endl;
+                    return 0;
+                }
                 cout << "\nLogin gagal silahkan coba lagi" << endl;
                 cout << "Sisa percobaan: " << 3 - dicoba << endl;
             } else {
@@ -30,11 +35,6 @@
             
         }
 
-        if (dicoba == 3)
-        {
-            cout << "\nPercobaan melebihi 3 kali. Program dihentikan" << endl;
-            return 0;
-        }
         
 
         int select;
