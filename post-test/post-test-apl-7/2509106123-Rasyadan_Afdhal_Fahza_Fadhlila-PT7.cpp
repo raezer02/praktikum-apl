@@ -121,7 +121,6 @@ void tambahFilm(Film *film, int *jumlahFilm) {
     getline(cin, (film+(*jumlahFilm))->judul);
 
     cout << "Genre : ";
-    cin.ignore();
     getline(cin, (film+(*jumlahFilm))->genre);
 
     cout << "Tahun : ";
@@ -147,8 +146,7 @@ void updateFilm(Film *film, int *jumlahFilm) {
     try
     {
         if (*jumlahFilm == 0) {
-            cout << "\nData kosong!\n";
-            return;
+            throw runtime_error("Data kosong!");
         }
         
         int pilih;
@@ -158,8 +156,7 @@ void updateFilm(Film *film, int *jumlahFilm) {
         pilih = inputAngka();
         
         if (pilih < 1 || pilih > *jumlahFilm) {
-            cout << "Pilihan tidak valid!\n";
-            return;
+            throw out_of_range("Index di luar batas!");
         }
         
         cout << "Judul baru : ";
@@ -167,7 +164,6 @@ void updateFilm(Film *film, int *jumlahFilm) {
         getline(cin, (film+(pilih-1))->judul);
         
         cout << "Genre baru : ";
-        cin.ignore();
         getline(cin, (film+(pilih-1))->genre);
         
         cout << "Tahun baru : ";
@@ -185,8 +181,7 @@ void hapusFilm(Film *film, int *jumlahFilm) {
     try
     {
         if (*jumlahFilm == 0) {
-            cout << "\nData kosong!\n";
-            return;
+            throw runtime_error("Data kosong!");
         }
     
         int pilih;
@@ -196,8 +191,7 @@ void hapusFilm(Film *film, int *jumlahFilm) {
         pilih = inputAngka();
     
         if (pilih < 1 || pilih > *jumlahFilm) {
-            cout << "Pilihan tidak valid!\n";
-            return;
+            throw out_of_range("Index di luar batas!");
         }
     
         for (int i = pilih-1; i < (*jumlahFilm)-1; i++) {
